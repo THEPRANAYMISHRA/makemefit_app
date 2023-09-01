@@ -2,22 +2,26 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import { Picker } from '@react-native-picker/picker';
 // import Storage from 'react-native-storage';
-
+import { useProfileContext } from '../ProfileContext';
 
 const UserProfileScreen = ({ navigation }) => {
     const [name, setName] = useState(null);
     const [age, setAge] = useState(null);
     const [gender, setGender] = useState(null);
+    const { profile, updateProfile } = useProfileContext();
 
 
     const SaveDataAndMoveHome = () => {
         if (!name || !age || !gender) {
             return alert("Please fill all the fields");
         } else {
-            navigation.navigate('Home', { name, age, gender });
+            alert("Profile saved!")
+            updateProfile({ name, age, gender })
+            navigation.navigate('Home');
         }
     }
     return (
+
         <View style={styles.container}>
             <Text style={styles.heading}>Name:</Text>
             <TextInput
