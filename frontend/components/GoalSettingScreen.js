@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { useProfileContext } from '../ProfileContext';
 
 const GoalSettingScreen = ({ navigation }) => {
+    const { goal, updateGoal } = useProfileContext();
     const [goalType, setGoalType] = useState(null);
     const [target, setTarget] = useState(null);
 
@@ -33,7 +35,8 @@ const GoalSettingScreen = ({ navigation }) => {
                         return alert("Please fill all fields");
                     } else {
                         alert("Goal Saved!")
-                        navigation.navigate('UserProfile');
+                        updateGoal({ type: goalType, target: target });
+                        navigation.navigate('Home')
                     }
                 }}
             />
