@@ -6,14 +6,9 @@ const HomeScreen = ({ navigation }) => {
     const { profile, updateProfile, goal, updateGoal } = useProfileContext();
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={styles.heading}>Welcome to the Fitness App!</Text>
+            <Text style={styles.heading}>HealthHut!</Text>
             <Text style={styles.subHeading}>User:{profile.name ? profile.name : "user"}</Text>
             <Text style={styles.subHeading}>Goal:{goal.type ? goal.type : "mygoal"}</Text>
-
-            <Button
-                title="Set Up Profile"
-                onPress={() => navigation.navigate('UserProfile')}
-            />
 
             <Button
                 title="Set Fitness Goals"
